@@ -47,6 +47,33 @@
                     value="<% if (editing || hasError) { %><%= product.price %><% } %>">
             </div>
             <div class="form-control">
+                <label for="shopName">Shop Name</label>
+                <input 
+                    class="<%= validationErrors.find(e => e.param === 'shopName') ? 'invalid' : '' %>"
+                    type="text" 
+                    name="shopName" 
+                    id="shopName" 
+                    value="<% if (editing || hasError) { %><%= product.shopName %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="shopOwner">Shop Owner</label>
+                <input 
+                    class="<%= validationErrors.find(e => e.param === 'shopOwner') ? 'invalid' : '' %>"
+                    type="text" 
+                    name="shopOwner" 
+                    id="title" 
+                    value="<% if (editing || hasError) { %><%= product.shopOwner %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="shopLocation">Shop Location</label>
+                <input 
+                    class="<%= validationErrors.find(e => e.param === 'shopLocation') ? 'invalid' : '' %>"
+                    type="text" 
+                    name="shopLocation" 
+                    id="shopLocation" 
+                    value="<% if (editing || hasError) { %><%= product.shopLocation %><% } %>">
+            </div>
+            <div class="form-control">
                 <label for="description">Description</label>
                 <textarea 
                     class="<%= validationErrors.find(e => e.param === 'description') ? 'invalid' : '' %>"

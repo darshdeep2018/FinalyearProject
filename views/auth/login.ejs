@@ -29,6 +29,12 @@
                     id="password" 
                     value="<%= oldInput.password %>">
             </div>
+            <div class="form-control" id="isCustomer">
+                <input type="radio" name="isCustomer" value="true">
+                    <label for="male">Customer</label><br>
+                    <input type="radio" name="isCustomer" value="false">
+                    <label for="customer">Shopkeeper</label>
+            </div>
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <button class="btn" type="submit">Login</button>
         </form>

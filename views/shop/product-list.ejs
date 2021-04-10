@@ -25,6 +25,15 @@
                                     <p class="product__description">
                                         <%= product.description %>
                                     </p>
+                                    <p class="product__shopName">
+                                        <%= product.shopName %>
+                                    </p>
+                                    <p class="product__shopOwner">
+                                        <%= product.shopOwner %>
+                                    </p>
+                                    <a class="product__shopLocation" href="<%= product.shopLocation %>">
+                                        map location
+                                    </a>
                                 </div>
                                 <div class="card__actions">
                                     <a href="/products/<%= product._id %>" class="btn">Details</a>

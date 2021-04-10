@@ -52,7 +52,7 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
 );
@@ -84,7 +84,8 @@ app.use((req, res, next) => {
       if (!user) {
         return next();
       }
-      req.user = user;
+      req.user = user; 
+      res.locals.isACustomer=req.user.isCustomer;
       next();
     })
     .catch(err => {
@@ -122,6 +123,7 @@ mongoose
   .connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true} )
   .then(result => {
     app.listen(3000);
+    console.log("Running at 3000");
   })
   .catch(err => {
     console.log(err);

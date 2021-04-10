@@ -23,6 +23,18 @@ const productSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  shopName: {
+    type: String,
+    required: true
+  },
+  shopOwner: {
+    type: String,
+    required: true
+  },
+  shopLocation: {
+    type: String,
+    required: true
   }
 });
 

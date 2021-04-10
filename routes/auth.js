@@ -20,7 +20,9 @@ router.post(
     body('password', 'Password has to be valid.')
       .isLength({ min: 5 })
       .isAlphanumeric()
-      .trim()
+      .trim(),
+    body('isCustomer', 'Check one of them')
+    .trim()
   ],
   authController.postLogin
 );

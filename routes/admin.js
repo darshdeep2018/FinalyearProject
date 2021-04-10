@@ -25,6 +25,14 @@ router.post(
     body('price').isFloat(),
     body('description')
       .isLength({ min: 5, max: 400 })
+      .trim(),
+    body('shopName')
+      .isString()
+      .isLength({ min: 3 })
+      .trim(),
+    body('shopOwner')
+      .isString()
+      .isLength({ min: 3 })
       .trim()
   ],
   isAuth,
@@ -43,7 +51,15 @@ router.post(
     body('price').isFloat(),
     body('description')
       .isLength({ min: 5, max: 400 })
-      .trim()
+      .trim(),
+      body('shopName')
+        .isString()
+        .isLength({ min: 3 })
+        .trim(),
+      body('shopOwner')
+        .isString()
+        .isLength({ min: 3 })
+        .trim()
   ],
   isAuth,
   adminController.postEditProduct

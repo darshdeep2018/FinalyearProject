@@ -11,6 +11,11 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  isCustomer: {
+    type: String,
+    default:"true",
+    required: true
+  },
   resetToken: String,
   resetTokenExpiration: Date,
   cart: {

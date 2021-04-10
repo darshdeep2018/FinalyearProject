@@ -21,6 +21,9 @@ exports.postAddProduct = (req, res, next) => {
   const title = req.body.title;
   const image = req.file;
   const price = req.body.price;
+  const shopName = req.body.shopName;
+  const shopOwner = req.body.shopOwner;
+  const shopLocation = req.body.shopLocation;
   const description = req.body.description;
   if (!image) {
     return res.status(422).render('admin/edit-product', {
@@ -31,7 +34,10 @@ exports.postAddProduct = (req, res, next) => {
       product: {
         title: title,
         price: price,
-        description: description
+        description: description,
+        shopLocation: shopLocation,
+        shopName: shopName,
+        shopOwner: shopOwner
       },
       errorMessage: 'Attached file is not an image.',
       validationErrors: []
@@ -49,7 +55,10 @@ exports.postAddProduct = (req, res, next) => {
       product: {
         title: title,
         price: price,
-        description: description
+        description: description,
+        shopLocation: shopLocation,
+        shopName: shopName,
+        shopOwner: shopOwner
       },
       errorMessage: errors.array()[0].msg,
       validationErrors: errors.array()
@@ -64,7 +73,10 @@ exports.postAddProduct = (req, res, next) => {
     price: price,
     description: description,
     imageUrl: imageUrl,
-    userId: req.user
+    userId: req.user,
+    shopLocation: shopLocation,
+    shopName: shopName,
+    shopOwner: shopOwner
   });
   product
     .save()
@@ -127,6 +139,9 @@ exports.postEditProduct = (req, res, next) => {
   const prodId = req.body.productId;
   const updatedTitle = req.body.title;
   const updatedPrice = req.body.price;
+  const updateShopName = req.body.shopName;
+  const updateShopOwner = req.body.shopOwner;
+  const updateShopLocation = req.body.shopLocation;
   const image = req.file;
   const updatedDesc = req.body.description;
 
@@ -142,7 +157,10 @@ exports.postEditProduct = (req, res, next) => {
         title: updatedTitle,
         price: updatedPrice,
         description: updatedDesc,
-        _id: prodId
+        _id: prodId,
+        shopLocation: updateShopLocation,
+        shopName: updateShopName,
+        shopOwner: updateShopOwner
       },
       errorMessage: errors.array()[0].msg,
       validationErrors: errors.array()
@@ -157,6 +175,9 @@ exports.postEditProduct = (req, res, next) => {
       product.title = updatedTitle;
       product.price = updatedPrice;
       product.description = updatedDesc;
+      product.shopLocation = updateShopLocation;
+      product.shopOwner = updateShopOwner;
+      product.shopName = updateShopName;
       if (image) {
         fileHelper.deleteFile(product.imageUrl);
         product.imageUrl = image.path;
